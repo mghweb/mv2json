@@ -1,0 +1,25 @@
+{
+  "name": "mv2json",
+  "version": "0.1.0",
+  "description": "Extract MvFUNCTION tag information to JSON format for use in autocompletion / documentation.",
+  "main": "mv2json.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mghweb/mv2json.git"
+  },
+  "keywords": [
+    "mv",
+    "json",
+    "miva",
+    "mvt"
+  ],
+  "author": "Max Hegler",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/mghweb/mv2json/issues"
+  },
+  "homepage": "https://github.com/mghweb/mv2json#readme"
+}
