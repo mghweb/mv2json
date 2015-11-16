@@ -49,16 +49,14 @@ var lsk = {
 	 * 
 	 * @param {string} p - the path to be converted.
 	 * @param {string} local_base_path=Merchant-9/ - the local base path (e.g. 'Merchant-9')
-	 * @param {string} distro_base_path=/mm5/ - the distribution base path (e.g. '/mm5/' or '/Merchant2/')
 	 * @return {string} the parsed distribution path
 	 */
 	pathToDistroPath: function(p, local_base_path, distro_base_path) {
 
 		// Default parameter values
 		local_base_path = (!local_base_path) ? 'Merchant-9' + path.sep : local_base_path;
-		distro_base_path = (!distro_base_path) ? '/mm5/' : distro_base_path;
 
-		var distro = distro_base_path + '5.00/';
+		var distro = 'g.Module_Root $ ';
 
 		var localRelativePath = p.split(local_base_path)[1]; 
 		var info = path.parse(localRelativePath);
@@ -66,11 +64,11 @@ var lsk = {
 		var cleanBase = info.name.replace('mmlsk-', '');
 		var compiledExt = info.ext.replace(/^.mv$/i, '.mvc');
 
-		return distro + info.dir + '/' + cleanBase + compiledExt;
+		return distro + "'" + info.dir + '/' + cleanBase + compiledExt + "'";
 
 	}
 
 };
 
-var parsed = lsk.pathToGlobal(path4) || lsk.pathToDistroPath(path4);
+var parsed = lsk.pathToGlobal(path1) || lsk.pathToDistroPath(path1);
 console.log(parsed);
