@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mghweb/mv2json#readme",
   "dependencies": {
+    "fs-extra": "^0.26.2",
     "htmlparser2": "^3.8.3"
   }
 }
