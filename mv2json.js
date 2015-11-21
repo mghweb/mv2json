@@ -140,8 +140,55 @@ var mv2json = {
 		var pathinfo = path.parse(short_path);
 		var cleanBase = pathinfo.name.replace('mmlsk-', '');
 		var compiledExt = pathinfo.ext.replace(/^.mv$/i, '.mvc');
-		return 'g.Module_Root $ \'' + pathinfo.dir + '/' + cleanBase + compiledExt + '\''; 
-	}
+
+		var output = 'g.Module_Root $'
+			output += " '";
+			if (pathinfo.dir !== '/' && pathinfo.dir.length > 0) {
+				output += pathinfo.dir;
+				output += '/';
+			}
+			output += cleanBase;
+			output += compiledExt;
+			output += "'";
+		return output;
+	},
+
+	/**
+	 * Convert a LSK path to it's `g.` variable representation.
+	 * 
+	 * @param {string} p the path to be converted.
+	 * @return {string|boolean} when the passed path is matched to a `g.` variable, else false
+	 */
+	pathToGlobal: function(p) {
+
+		var global = 'g.Module_'; // generic base
+		var st = global; // starting value before validation
+
+		var info = path.parse(p);
+
+		// *Library_
+		if ( p.search(new RegExp(path.sep + 'lib' + path.sep), 'i') !== -1 ) {
+			global += 'Library_';
+
+			// *DB
+			if ( p.search(new RegExp(path.sep + '(dbeng|dbprim)' + path.sep), 'i') !== -1 ) {
+				global += 'DB';
+			}
+
+			// *Utilities
+			if ( info.name === 'util_public') {
+				global += 'Utilities';
+			}
+		}
+
+		// *Feature_
+		if ( p.search(new RegExp(path.sep + 'features' + path.sep), 'i') !== -1 ) {
+			global += 'Feature_' + info.name.toUpperCase();
+		}
+
+		return (global !== st) ? global : false;
+
+	},
 
 };
 
