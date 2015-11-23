@@ -2,7 +2,7 @@
   "name": "mv2json",
   "version": "0.1.0",
   "description": "Extract MvFUNCTION tag information to JSON format for use in autocompletion / documentation.",
-  "main": "mv2json.js",
+  "main": "lib/mv2json.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +17,7 @@
     "mvt"
   ],
   "author": "Max Hegler",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mghweb/mv2json/issues"
   },
